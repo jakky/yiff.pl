@@ -33,8 +33,8 @@ my %IRSSI = (
 	changed     => 'im gay',
 );
 
-my $yifffile = "/home/jakk/yiffs.txt";
-my $solofile = "/home/jakk/solos.txt";
+my $yifffile = "yiffs.txt";
+my $solofile = "solos.txt";
 
 Irssi::command_bind("yiff", \&yiff);
 
@@ -66,10 +66,10 @@ sub yiff {
 			my @solos = <SOLOFILE>;
 			close(SOLOFILE);
 			my $yiff = $solos[rand @solos];
-                        $yiff =~ s/\$user/$user/g;
-                        $yiff =~ s/\$nick/$nick/g;
+			$yiff =~ s/\$user/$user/g;
+			$yiff =~ s/\$nick/$nick/g;
 			$yiff =~ s/\$channel/$channel/g;
-                        $chan->command("me $yiff");
+			$chan->command("me $yiff");
 		}
 	}
 }
